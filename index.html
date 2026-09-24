@@ -1,0 +1,1051 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artur Pepryk — Junior Frontend Developer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --bg-dark: #080c14;
+        --card-bg: rgba(16, 24, 40, 0.75);
+        --card-border: rgba(255, 255, 255, 0.08);
+        --accent: #38bdf8;
+        --accent-glow: rgba(56, 189, 248, 0.35);
+        --accent-subtle: rgba(56, 189, 248, 0.12);
+        --text-primary: #f8fafc;
+        --text-muted: #94a3b8;
+        --font-main: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+        --radius: 12px;
+        --transition: all 0.25s ease-in-out;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font-main);
+        background-color: var(--bg-dark);
+        color: var(--text-primary);
+        line-height: 1.65;
+        background-image:
+          radial-gradient(
+            circle at 10% 20%,
+            rgba(56, 189, 248, 0.08) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(99, 102, 241, 0.08) 0%,
+            transparent 40%
+          );
+        background-attachment: fixed;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Header */
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: rgba(8, 12, 20, 0.85);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--card-border);
+      }
+      .nav-container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand-logo {
+        font-family: var(--font-mono);
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: #fff;
+        text-decoration: none;
+      }
+      .brand-logo span {
+        color: var(--accent);
+      }
+      .nav-menu {
+        display: flex;
+        gap: 22px;
+      }
+      .nav-menu a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+      .nav-menu a:hover {
+        color: var(--accent);
+      }
+
+      .lang-switch {
+        display: flex;
+        background: rgba(255, 255, 255, 0.06);
+        padding: 3px;
+        border-radius: 20px;
+        border: 1px solid var(--card-border);
+      }
+      .lang-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        padding: 4px 10px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        border-radius: 14px;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+      .lang-btn.active,
+      .lang-btn:hover {
+        background: var(--accent);
+        color: #080c14;
+      }
+
+      /* Hero */
+      .hero-section {
+        padding: 90px 0 50px;
+      }
+      .status-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--accent-subtle);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        padding: 6px 14px;
+        border-radius: 50px;
+        color: var(--accent);
+        font-size: 0.85rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+      }
+      .pulse-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--accent);
+        border-radius: 50%;
+        box-shadow: 0 0 10px var(--accent);
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(0.95);
+          opacity: 0.7;
+        }
+        50% {
+          transform: scale(1.3);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(0.95);
+          opacity: 0.7;
+        }
+      }
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        letter-spacing: -1.5px;
+        margin-bottom: 8px;
+        line-height: 1.1;
+      }
+      .hero-subtitle {
+        font-size: 1.35rem;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 12px;
+      }
+      .hero-location {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: 18px;
+      }
+      .hero-location i {
+        color: var(--accent);
+        margin-right: 6px;
+      }
+      .hero-intro {
+        max-width: 680px;
+        color: var(--text-muted);
+        font-size: 1.05rem;
+        margin-bottom: 30px;
+      }
+      .hero-cta {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 22px;
+        border-radius: 8px;
+        font-size: 0.92rem;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: #080c14;
+      }
+      .btn-primary:hover {
+        background: #7dd3fc;
+        box-shadow: 0 0 20px var(--accent-glow);
+      }
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-primary);
+        border: 1px solid var(--card-border);
+      }
+      .btn-secondary:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .btn-icon {
+        width: 42px;
+        height: 42px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--card-border);
+        color: var(--text-primary);
+        font-size: 1.1rem;
+      }
+      .btn-icon:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+
+      /* Sections */
+      .section {
+        padding: 50px 0;
+      }
+      .section-heading {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .section-heading span:first-child {
+        font-family: var(--font-mono);
+        color: var(--accent);
+        font-size: 1.1rem;
+      }
+
+      .glass-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius);
+        padding: 26px;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        transition: var(--transition);
+      }
+      .glass-card:hover {
+        border-color: rgba(56, 189, 248, 0.25);
+      }
+      .text-lead {
+        font-size: 1rem;
+        color: #cbd5e1;
+        line-height: 1.75;
+      }
+      .strengths-box {
+        margin-top: 18px;
+        padding-top: 16px;
+        border-top: 1px solid var(--card-border);
+      }
+      .strengths-box h4 {
+        font-size: 0.95rem;
+        color: var(--accent);
+        margin-bottom: 4px;
+      }
+      .strengths-box p {
+        color: var(--text-muted);
+        font-size: 0.92rem;
+      }
+
+      /* Timeline */
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .card-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .role-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      .company-title {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--accent);
+      }
+      .badge-date {
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-muted);
+        padding: 4px 10px;
+        border-radius: 6px;
+      }
+      .task-list {
+        list-style: none;
+        margin-bottom: 18px;
+      }
+      .task-list li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 8px;
+        color: #cbd5e1;
+        font-size: 0.92rem;
+      }
+      .task-list li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tech-tags span {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        background: rgba(56, 189, 248, 0.08);
+        color: var(--accent);
+        border: 1px solid rgba(56, 189, 248, 0.18);
+        padding: 4px 10px;
+        border-radius: 6px;
+      }
+
+      .edu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 20px;
+      }
+      .edu-details {
+        margin-top: 12px;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+      .badge-tag {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 4px;
+        display: inline-block;
+      }
+      .project-desc {
+        color: #cbd5e1;
+        font-size: 0.95rem;
+        margin-bottom: 16px;
+      }
+
+      .skills-block-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+      .skill-category {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .skill-category i {
+        color: var(--accent);
+        font-size: 1.15rem;
+      }
+      .skill-category h4 {
+        font-size: 1.05rem;
+        font-weight: 600;
+      }
+
+      .lang-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+      .lang-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .lang-code {
+        font-family: var(--font-mono);
+        font-weight: 700;
+        font-size: 1.1rem;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text-muted);
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+      }
+      .lang-code.accent {
+        background: var(--accent-subtle);
+        color: var(--accent);
+      }
+      .lang-level {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+      .accent-text {
+        color: var(--accent);
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      .contact-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        text-decoration: none;
+        color: var(--text-primary);
+      }
+      .contact-card i {
+        font-size: 1.4rem;
+        color: var(--accent);
+      }
+      .contact-card span {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+      .rodo-notice {
+        font-size: 0.78rem;
+        color: #64748b;
+        border-left: 2px solid rgba(255, 255, 255, 0.1);
+        padding-left: 14px;
+        line-height: 1.5;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 32px 0;
+        border-top: 1px solid var(--card-border);
+        color: var(--text-muted);
+        font-size: 0.85rem;
+      }
+
+      @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
+        }
+        .hero-title {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="nav-container">
+        <a href="#hero" class="brand-logo">&lt;<span>AP</span> /&gt;</a>
+        <nav class="nav-menu">
+          <a href="#about" data-i18n="nav_about">O mnie</a>
+          <a href="#experience" data-i18n="nav_experience">Doświadczenie</a>
+          <a href="#education" data-i18n="nav_education">Edukacja</a>
+          <a href="#projects" data-i18n="nav_projects">Projekty</a>
+          <a href="#skills" data-i18n="nav_skills">Umiejętności</a>
+          <a href="#contact" data-i18n="nav_contact">Kontakt</a>
+        </nav>
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="pl">PL</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ua">UA</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="hero-section">
+        <div class="container">
+          <div class="status-chip">
+            <span class="pulse-dot"></span>
+            <span data-i18n="hero_status">Dostępny od zaraz</span>
+          </div>
+          <h1 class="hero-title">Artur Pepryk</h1>
+          <h2 class="hero-subtitle" data-i18n="hero_role">
+            Junior Frontend Developer | Student Informatyki
+          </h2>
+          <p class="hero-location">
+            <i class="fa-solid fa-location-dot"></i> Warszawa, Polska
+          </p>
+          <p class="hero-intro" data-i18n="hero_intro">
+            Tworzę nowoczesne, responsywne aplikacje webowe w React, JavaScript
+            (ES6+), HTML5 i CSS3. Łączę dbałość o UI/UX z solidnymi fundamentami
+            backendowymi.
+          </p>
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary" data-i18n="btn_contact"
+              >Skontaktuj się</a
+            >
+            <a
+              href="mailto:peprikartur@gmail.com"
+              class="btn btn-secondary"
+              data-i18n="btn_email"
+              >Napisz e-mail</a
+            >
+            <a
+              href="https://github.com/ArturPeprik"
+              target="_blank"
+              rel="noreferrer"
+              class="btn btn-icon"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container">
+          <h2 class="section-heading">
+            <span>01.</span>
+            <span data-i18n="about_heading">Podsumowanie zawodowe</span>
+          </h2>
+          <div class="glass-card">
+            <p class="text-lead" data-i18n="about_desc">
+              Zmotywowany student informatyki na Akademii Finansów i Biznesu
+              Vistula oraz początkujący Frontend Developer z praktycznym
+              doświadczeniem stażowym. Specjalizuję się w tworzeniu
+              nowoczesnych, responsywnych aplikacji webowych w oparciu o React,
+              JavaScript (ES6+), HTML5 i CSS3. Posiadam solidne fundamenty
+              backendowe (REST API, Python/Django, Node.js) oraz bazodanowe
+              (SQL). Nastawiony na pisanie czystego, semantycznego kodu, dbałość
+              o detale interfejsu (UI/UX) oraz dynamiczny rozwój w zespole
+              programistycznym.
+            </p>
+            <div class="strengths-box">
+              <h4 data-i18n="strengths_title">Mocne strony:</h4>
+              <p data-i18n="strengths_desc">
+                Szybka adaptacja do nowych technologii, analityczne myślenie,
+                komunikatywność i zaangażowanie.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <div class="container">
+          <h2 class="section-heading">
+            <span>02.</span>
+            <span data-i18n="exp_heading">Doświadczenie zawodowe</span>
+          </h2>
+          <div class="timeline">
+            <div class="timeline-card glass-card">
+              <div class="card-head">
+                <div>
+                  <h3 class="role-title" data-i18n="exp1_role">
+                    Frontend Developer (Staż)
+                  </h3>
+                  <h4 class="company-title">Studento IT Academy</h4>
+                </div>
+                <span class="badge-date">06.2024 — 09.2024</span>
+              </div>
+              <ul class="task-list">
+                <li data-i18n="exp1_t1">
+                  Stworzenie ok. 5 responsywnych mini-serwisów sprzedażowych i
+                  stron z formularzami w React, JavaScript (ES6+) i CSS3.
+                </li>
+                <li data-i18n="exp1_t2">
+                  Budowa modularnych, reużywalnych komponentów UI oraz
+                  integracja widoków z zewnętrznymi usługami REST API.
+                </li>
+                <li data-i18n="exp1_t3">
+                  Optymalizacja szybkości ładowania i poprawności semantycznej
+                  kodu oraz współpraca zespołowa z użyciem Git/GitHub
+                  (branching, pull requests, code review).
+                </li>
+              </ul>
+              <div class="tech-tags">
+                <span>React</span>
+                <span>JavaScript ES6+</span>
+                <span>CSS3/RWD</span>
+                <span>REST API</span>
+                <span>Git</span>
+              </div>
+            </div>
+
+            <div class="timeline-card glass-card">
+              <div class="card-head">
+                <div>
+                  <h3 class="role-title" data-i18n="exp2_role">
+                    Junior Python Developer (Praktyka)
+                  </h3>
+                  <h4 class="company-title">Djun IT Academy Warsaw</h4>
+                </div>
+                <span class="badge-date">07.2023 — 10.2023</span>
+              </div>
+              <ul class="task-list">
+                <li data-i18n="exp2_t1">
+                  Współtworzenie i rozbudowa modułów backendowych aplikacji w
+                  oparciu o Python oraz framework Django.
+                </li>
+                <li data-i18n="exp2_t2">
+                  Projektowanie, wdrażanie oraz testowanie podstawowych
+                  endpointów REST API do wymiany danych z frontendem.
+                </li>
+                <li data-i18n="exp2_t3">
+                  Podstawowe operacje na relacyjnych bazach danych, modelowanie
+                  struktur danych i optymalizacja prostych zapytań.
+                </li>
+              </ul>
+              <div class="tech-tags">
+                <span>Python</span>
+                <span>Django</span>
+                <span>REST API</span>
+                <span>SQL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" class="section">
+        <div class="container">
+          <h2 class="section-heading">
+            <span>03.</span>
+            <span data-i18n="edu_heading">Wykształcenie & Certyfikaty</span>
+          </h2>
+          <div class="edu-grid">
+            <div class="glass-card">
+              <span class="badge-date">10.2024 — 02.2029</span>
+              <h3 class="role-title" data-i18n="edu_degree">
+                Informatyka (Software Development) — Inżynier
+              </h3>
+              <h4 class="company-title">
+                Akademia Finansów i Biznesu Vistula w Warszawie
+              </h4>
+              <p class="edu-details" data-i18n="edu_desc">
+                <strong>Kluczowe przedmioty:</strong> Programowanie w
+                JavaScript/React, Aplikacje webowe.<br />
+                <strong>Umiejętności miękkie:</strong> praca w grupie (projekty
+                zespołowe).
+              </p>
+            </div>
+            <div class="glass-card">
+              <h3 class="role-title" data-i18n="cert_heading">
+                Kursy i Szkolenia
+              </h3>
+              <ul class="task-list" style="margin-top: 12px">
+                <li>
+                  <strong>2024:</strong> Frontend & React Development — Studento
+                  IT Academy
+                </li>
+                <li>
+                  <strong>2023:</strong> Python & Django Development — Djun IT
+                  Academy
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="container">
+          <h2 class="section-heading">
+            <span>04.</span>
+            <span data-i18n="proj_heading"
+              >Projekty & Aktywność Inżynierska</span
+            >
+          </h2>
+          <div class="glass-card">
+            <div class="card-head">
+              <div>
+                <span class="badge-tag" data-i18n="proj1_badge"
+                  >Projekt własny / Akademicki</span
+                >
+                <h3 class="role-title">Web App / REST API Showcase</h3>
+              </div>
+              <span class="badge-date">2024 — 2026</span>
+            </div>
+            <p class="project-desc" data-i18n="proj1_desc">
+              Budowa aplikacji typu Full-Stack z interfejsem w React oraz
+              serwerem w Node.js / Express.js, obsługującej operacje CRUD oraz
+              autoryzację. Integracja bazy danych SQL, implementacja zapyтань
+              oraz dbałość o responsywność interfejsu (CSS Grid / Flexbox).
+            </p>
+            <div class="tech-tags">
+              <span>React</span>
+              <span>Node.js</span>
+              <span>Express.js</span>
+              <span>SQL</span>
+              <span>REST API</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="container">
+          <h2 class="section-heading">
+            <span>05.</span>
+            <span data-i18n="skills_heading">Umiejętności Techniczne</span>
+          </h2>
+          <div class="skills-block-grid">
+            <div class="glass-card">
+              <div class="skill-category">
+                <i class="fa-solid fa-code"></i>
+                <h4>Frontend</h4>
+              </div>
+              <div class="tech-tags">
+                <span>React</span><span>JavaScript (ES6+)</span
+                ><span>HTML5</span><span>CSS3/SCSS</span><span>RWD</span
+                ><span>Flexbox / Grid</span><span>REST API</span>
+              </div>
+            </div>
+            <div class="glass-card">
+              <div class="skill-category">
+                <i class="fa-solid fa-server"></i>
+                <h4>Backend & Bazy Danych</h4>
+              </div>
+              <div class="tech-tags">
+                <span>Node.js</span><span>Express.js</span><span>Python</span
+                ><span>Django</span><span>SQL</span><span>MS SQL Server</span>
+              </div>
+            </div>
+            <div class="glass-card">
+              <div class="skill-category">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <h4>Narzędzia</h4>
+              </div>
+              <div class="tech-tags">
+                <span>Git</span><span>GitHub</span><span>VS Code</span
+                ><span>Linux</span><span>Windows</span><span>npm</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="languages" class="section">
+        <div class="container">
+          <h2 class="section-heading">
+            <span>06.</span>
+            <span data-i18n="lang_heading">Znajomość języków</span>
+          </h2>
+          <div class="lang-grid">
+            <div class="glass-card lang-card">
+              <span class="lang-code">PL</span>
+              <div>
+                <h4 data-i18n="lang_pl">Polski</h4>
+                <p class="lang-level" data-i18n="lvl_adv">Zaawansowany</p>
+              </div>
+            </div>
+            <div class="glass-card lang-card">
+              <span class="lang-code">EN</span>
+              <div>
+                <h4 data-i18n="lang_en">Angielski</h4>
+                <p class="lang-level" data-i18n="lvl_inter">
+                  Średniozaawansowany
+                </p>
+              </div>
+            </div>
+            <div class="glass-card lang-card">
+              <span class="lang-code accent">UA</span>
+              <div>
+                <h4 data-i18n="lang_ua">Ukraiński</h4>
+                <p class="lang-level accent-text" data-i18n="lvl_native">
+                  Język ojczysty
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="container">
+          <h2 class="section-heading">
+            <span>07.</span> <span data-i18n="contact_heading">Kontakt</span>
+          </h2>
+          <div class="contact-grid">
+            <a
+              href="mailto:peprikartur@gmail.com"
+              class="glass-card contact-card"
+            >
+              <i class="fa-solid fa-envelope"></i>
+              <div>
+                <span>Email</span><strong>peprikartur@gmail.com</strong>
+              </div>
+            </a>
+            <a href="tel:+48888071286" class="glass-card contact-card">
+              <i class="fa-solid fa-phone"></i>
+              <div>
+                <span data-i18n="c_phone">Telefon</span
+                ><strong>+48 888 071 286</strong>
+              </div>
+            </a>
+            <div class="glass-card contact-card">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <span data-i18n="c_loc">Lokalizacja</span
+                ><strong>Warszawa, Polska</strong>
+              </div>
+            </div>
+          </div>
+          <p class="rodo-notice" data-i18n="rodo_text">
+            Wyrażam zgodę na przetwarzanie moich danych osobowych w celu
+            obecnych i przyszłych rekrutacji zgodnie z RODO.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container"><p>© 2026 Artur Pepryk.</p></div>
+    </footer>
+
+    <script>
+      const dictionary = {
+        pl: {
+          nav_about: "O mnie",
+          nav_experience: "Doświadczenie",
+          nav_education: "Edukacja",
+          nav_projects: "Projekty",
+          nav_skills: "Umiejętności",
+          nav_contact: "Kontakt",
+          hero_status: "Dostępny od zaraz",
+          hero_role: "Junior Frontend Developer | Student Informatyki",
+          hero_intro:
+            "Tworzę nowoczesne, responsywne aplikacje webowe w React, JavaScript (ES6+), HTML5 i CSS3. Łączę dbałość o UI/UX z solidnymi fundamentami backendowymi.",
+          btn_contact: "Skontaktuj się",
+          btn_email: "Napisz e-mail",
+          about_heading: "Podsumowanie zawodowe",
+          about_desc:
+            "Zmotywowany student informatyki na Akademii Finansów i Biznesu Vistula oraz początkujący Frontend Developer z praktycznym doświadczeniem stażowym. Specjalizuję się w tworzeniu nowoczesnych, responsywnych aplikacji webowych w oparciu o React, JavaScript (ES6+), HTML5 i CSS3. Posiadam solidne fundamenty backendowe (REST API, Python/Django, Node.js) oraz bazodanowe (SQL). Nastawiony na pisanie czystego, semantycznego kodu, dbałość o detale interfejsu (UI/UX) oraz dynamiczny rozwój w zespole programistycznym.",
+          strengths_title: "Mocne strony:",
+          strengths_desc:
+            "Szybka adaptacja do nowych technologii, analityczne myślenie, komunikatywność i zaangażowanie.",
+          exp_heading: "Doświadczenie zawodowe",
+          exp1_role: "Frontend Developer (Staż)",
+          exp1_t1:
+            "Stworzenie ok. 5 responsywnych mini-serwisów sprzedażowych i stron z formularzami w React, JavaScript (ES6+) i CSS3.",
+          exp1_t2:
+            "Budowa modularnych, reużywalnych komponentów UI oraz integracja widoków z zewnętrznymi usługami REST API.",
+          exp1_t3:
+            "Optymalizacja szybkości ładowania i poprawności semantycznej kodu oraz współpraca zespołowa z użyciem Git/GitHub (branching, pull requests, code review).",
+          exp2_role: "Junior Python Developer (Praktyka)",
+          exp2_t1:
+            "Współtworzenie i rozbudowa modułów backendowych aplikacji w oparciu o Python oraz framework Django.",
+          exp2_t2:
+            "Projektowanie, wdrażanie oraz testowanie podstawowych endpointów REST API do wymiany danych z frontendem.",
+          exp2_t3:
+            "Podstawowe operacje na relacyjnych bazach danych, modelowanie struktur danych i optymalizacja prostych zapytań.",
+          edu_heading: "Wykształcenie & Certyfikaty",
+          edu_degree: "Informatyka (Software Development) — Inżynier",
+          edu_desc:
+            "Kluczowe przedmioty: Programowanie w JavaScript/React, Aplikacje webowe. Umiejętności miękkie: praca w grupie (projekty zespołowe).",
+          cert_heading: "Kursy i Szkolenia",
+          proj_heading: "Projekty & Aktywność Inżynierska",
+          proj1_badge: "Projekt własny / Akademicki",
+          proj1_desc:
+            "Budowa aplikacji typu Full-Stack z interfejsem w React oraz serwerem w Node.js / Express.js, obsługującej operacje CRUD oraz autoryzację. Integracja bazy danych SQL, implementacja zapytań oraz dbałość o responsywność interfejsu (CSS Grid / Flexbox).",
+          skills_heading: "Umiejętności Techniczne",
+          lang_heading: "Znajomość języków",
+          lang_pl: "Polski",
+          lang_en: "Angielski",
+          lang_ua: "Ukraiński",
+          lvl_adv: "Zaawansowany",
+          lvl_inter: "Średniozaawansowany",
+          lvl_native: "Język ojczysty",
+          contact_heading: "Kontakt",
+          c_phone: "Telefon",
+          c_loc: "Lokalizacja",
+          rodo_text:
+            "Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obecnych i przyszłych rekrutacji zgodnie z RODO.",
+        },
+        en: {
+          nav_about: "About",
+          nav_experience: "Experience",
+          nav_education: "Education",
+          nav_projects: "Projects",
+          nav_skills: "Skills",
+          nav_contact: "Contact",
+          hero_status: "Available immediately",
+          hero_role: "Junior Frontend Developer | Computer Science Student",
+          hero_intro:
+            "Building modern, responsive web apps using React, JavaScript (ES6+), HTML5, and CSS3. Merging attention to UI/UX details with solid backend foundations.",
+          btn_contact: "Get in touch",
+          btn_email: "Send Email",
+          about_heading: "Professional Summary",
+          about_desc:
+            "Motivated computer science student at Vistula University and aspiring Frontend Developer with practical internship experience. Specialized in developing modern, responsive web applications based on React, JavaScript (ES6+), HTML5, and CSS3. Solid backend (REST API, Python/Django, Node.js) and database (SQL) fundamentals. Focused on clean semantic code, UI/UX precision, and growing within a developer team.",
+          strengths_title: "Key Strengths:",
+          strengths_desc:
+            "Fast learner of new technologies, analytical thinking, strong communication, and dedication.",
+          exp_heading: "Work Experience",
+          exp1_role: "Frontend Developer (Intern)",
+          exp1_t1:
+            "Developed ~5 responsive sales landing pages and form-driven mini-sites using React, JavaScript (ES6+), and CSS3.",
+          exp1_t2:
+            "Built modular, reusable UI components and integrated views with external REST APIs.",
+          exp1_t3:
+            "Optimized loading speed and semantic markup, collaborating through Git/GitHub (branching, PRs, code reviews).",
+          exp2_role: "Junior Python Developer (Trainee)",
+          exp2_t1:
+            "Contributed to backend module development using Python and the Django framework.",
+          exp2_t2:
+            "Designed, implemented, and tested REST API endpoints for frontend data exchange.",
+          exp2_t3:
+            "Handled relational database operations, data structure modeling, and basic query optimization.",
+          edu_heading: "Education & Certifications",
+          edu_degree: "Computer Science (Software Development) — B.Sc. Eng.",
+          edu_desc:
+            "Key subjects: JavaScript/React Programming, Web Applications. Soft skills: teamwork and group projects.",
+          cert_heading: "Courses & Training",
+          proj_heading: "Projects & Engineering Work",
+          proj1_badge: "Personal / Academic Project",
+          proj1_desc:
+            "Full-stack web application with React UI and Node.js / Express backend supporting CRUD operations and auth. SQL database integration and responsive layouts (CSS Grid / Flexbox).",
+          skills_heading: "Technical Skills",
+          lang_heading: "Languages",
+          lang_pl: "Polish",
+          lang_en: "English",
+          lang_ua: "Ukrainian",
+          lvl_adv: "Advanced",
+          lvl_inter: "Intermediate",
+          lvl_native: "Native Language",
+          contact_heading: "Contact",
+          c_phone: "Phone",
+          c_loc: "Location",
+          rodo_text:
+            "I agree to the processing of personal data provided in this document for recruiting purposes in accordance with GDPR.",
+        },
+        ua: {
+          nav_about: "Про мене",
+          nav_experience: "Досвід",
+          nav_education: "Освіта",
+          nav_projects: "Проєкти",
+          nav_skills: "Навички",
+          nav_contact: "Контакти",
+          hero_status: "Готовий до роботи від зараз",
+          hero_role: "Junior Frontend Developer | Студент Інформатики",
+          hero_intro:
+            "Створюю сучасні, адаптивні вебдодатки на React, JavaScript (ES6+), HTML5 та CSS3. Поєдную увагу до деталей UI/UX із міцною бекенд-базою.",
+          btn_contact: "Зв'язатися",
+          btn_email: "Написати email",
+          about_heading: "Про мене",
+          about_desc:
+            "Вмотивований студент комп'ютерних наук Академії Vistula та Frontend Developer із практичним досвідом стажування. Спеціалізуюся на створенні сучасних адаптивних вебдодатків на базі React, JavaScript (ES6+) та CSS3. Маю міцні знання бекенду (REST API, Python/Django, Node.js) та баз даних (SQL). Орієнтований на чистий семантичний код, якісний UI/UX та командну роботу.",
+          strengths_title: "Сильні сторони:",
+          strengths_desc:
+            "Швидке опанування нових технологій, аналітичне мислення, комунікабельність та відданість справі.",
+          exp_heading: "Досвід роботи",
+          exp1_role: "Frontend Developer (Стажер)",
+          exp1_t1:
+            "Створення близько 5 адаптивних мінісервісів та сторінок із формами на React, JavaScript (ES6+) та CSS3.",
+          exp1_t2:
+            "Розробка модульних UI-компонентів та інтеграція інтерфейсу із зовнішніми REST API сервісами.",
+          exp1_t3:
+            "Оптимізація швидкості завантаження, семантики та командна робота з Git/GitHub (pull requests, code review).",
+          exp2_role: "Junior Python Developer (Практикант)",
+          exp2_t1:
+            "Розробка та розширення бекенд-модулів додатків на Python та Django.",
+          exp2_t2:
+            "Проєктування, впровадження та тестування REST API ендпоінтів для обміну даними з фронтендом.",
+          exp2_t3:
+            "Операції з реляційними базами даних, моделювання структур та оптимізація простих SQL-запитів.",
+          edu_heading: "Освіта та Сертифікати",
+          edu_degree: "Інформатика (Software Development) — Інженер",
+          edu_desc:
+            "Ключові дисципліни: Програмування JavaScript/React, Вебзастосунки. Soft skills: робота в командних проєктах.",
+          cert_heading: "Курси та тренінги",
+          proj_heading: "Проєкти та інженерна діяльність",
+          proj1_badge: "Власний / Академічний проєкт",
+          proj1_desc:
+            "Розробка Full-Stack застосунку з клієнтською частиною на React та сервером на Node.js / Express.js, підтримкою CRUD та авторизації. Інтеграція з SQL БД та адаптивна верстка.",
+          skills_heading: "Технічні навички",
+          lang_heading: "Мови",
+          lang_pl: "Польська",
+          lang_en: "Англійська",
+          lang_ua: "Українська",
+          lvl_adv: "Високий рівень",
+          lvl_inter: "Середній рівень",
+          lvl_native: "Рідна мова",
+          contact_heading: "Контакти",
+          c_phone: "Телефон",
+          c_loc: "Локація",
+          rodo_text:
+            "Згода на обробку персональних даних для цілей рекрутаційного процесу відповідно до RODO.",
+        },
+      };
+
+      function switchLanguage(lang) {
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (dictionary[lang] && dictionary[lang][key])
+            el.textContent = dictionary[lang][key];
+        });
+        document.querySelectorAll(".lang-btn").forEach((btn) => {
+          btn.classList.toggle(
+            "active",
+            btn.getAttribute("data-lang") === lang,
+          );
+        });
+        document.documentElement.lang = lang;
+      }
+
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.addEventListener("click", () =>
+          switchLanguage(btn.getAttribute("data-lang")),
+        );
+      });
+    </script>
+  </body>
+</html>
